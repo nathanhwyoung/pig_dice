@@ -8,5 +8,4 @@ describe('randomNumber', function() {
         expect(randomNumber()).to.below(7);
     });
 
-
 });
