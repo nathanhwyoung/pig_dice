@@ -1,5 +1,9 @@
 var turn = true;
 
+var randomNumber = function() {
+    return Math.floor(Math.random() * 6 ) + 1;
+};
+
 function Player(rollScore, turnScore, totalScore) {
     this.rollScore = rollScore;
     this.turnScore = turnScore;
@@ -7,23 +11,11 @@ function Player(rollScore, turnScore, totalScore) {
 }
 
 Player.prototype.roll = function() {
-    this.rollScore = randomNumber();
-}
-
-var randomNumber = function() {
-
-    var resultNumber = Math.floor(Math.random() * 6 ) + 1;
-
-    return resultNumber;
-};
-
-Player.prototype.decision = function() {
-
-    // if (this.rollScore === 1) {
-    //     this.turnScore = 0;
-    // } else {
-    //     this.turnScore += this.rollScore;
-    // }
+    // var rand = testNumber;
+    var rand = randomNumber();
+    if (rand === 1) {
+        return false;
+    } else return rand;
 }
 
 Player.prototype.switch = function() {
@@ -33,9 +25,22 @@ Player.prototype.switch = function() {
 
 $(document).ready(function() {
 
-    $("form#player1").submit(function(event) {
-        var input = ($("input#input").val());
-        var result = randomNumber();
+        // debugger;
+
+        var rollScore;
+        var turnScore;
+        var totalScore;
+
+        var player1 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
+        // var player2 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
+
+    $("form#player1roll").submit(function(event) {
+
+        player1.rollScore = this.roll;
+        console.log(this.roll);
+        // console.log(player1.rollScore);
+        player1[turnScore] += player1[rollScore];
+        var result = player1[turnScore];
 
         $(".output").text(result);
 
@@ -43,13 +48,31 @@ $(document).ready(function() {
         event.preventDefault();
     });
 
-    $("form#player2").submit(function(event) {
-        var input = ($("input#input").val());
-        var result = randomNumber();
+    $("form#player1hold").submit(function(event) {
 
         $(".output").text(result);
 
         $("#result").show();
         event.preventDefault();
     });
+
+    // $("form#player2roll").submit(function(event) {
+    //
+    //     // var roll = randomNumber();
+    //
+    //     $(".output").text(result);
+    //
+    //     $("#result").show();
+    //     event.preventDefault();
+    // });
+    //
+    // $("form#player2hold").submit(function(event) {
+    //
+    //
+    //     $(".output").text(result);
+    //
+    //     $("#result").show();
+    //     event.preventDefault();
+    // });
+
 });
