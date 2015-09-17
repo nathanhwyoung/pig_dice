@@ -35,6 +35,14 @@ $(document).ready(function() {
 
     $("form#player1roll").submit(function(event) {
 
+        // RESET OPPOSING FIELDS
+        player2.rollScore = 0;
+        player2.turnScore = 0;
+
+        // RESET FIELDS
+        $(".player2rollresult").text("");
+        $(".player2turnresult").text("");
+
         // PLAYER 1 ROLL
         player1.rollScore = player1.roll();
 
@@ -52,7 +60,6 @@ $(document).ready(function() {
 
             // CALL SWITCH FUNCTION
             player1.switch();
-            console.log(turn);
 
             // DISPLAY TURN SCORE
             $(".player1turnresult").text(player1.turnScore);
@@ -67,21 +74,93 @@ $(document).ready(function() {
             $(".player1turnresult").text(player1.turnScore);
         }
 
-        // PLAYER 1 HOLD
-        $("form#player1hold").submit(function(event) {
-            console.log("TOTAL AFTER " + player1.totalScore);
+        event.preventDefault();
 
-            player1.totalScore += player1.turnScore;
+    });
 
-            $(".player1totalscore").text(player1.totalScore);
+    // PLAYER 1 HOLD
+    $("form#player1hold").submit(function(event) {
 
-            player1.switch();
+        player1.totalScore += player1.turnScore;
 
-            event.preventDefault();
-        });
+        $(".player1totalscore").text(player1.totalScore);
+
+        player1.switch();
+
+        // RESET VARIABLES
+        player1.rollScore = 0;
+        player1.turnScore = 0;
+
+        // RESET FIELDS
+        $(".player1rollresult").text("");
+        $(".player1turnresult").text("");
+
+        event.preventDefault();
+    });
+
+    $("form#player2roll").submit(function(event) {
+
+        // RESET OPPOSING FIELDS
+        player1.rollScore = 0;
+        player1.turnScore = 0;
+
+        // RESET FIELDS
+        $(".player1rollresult").text("");
+        $(".player1turnresult").text("");
+
+        // PLAYER 2 ROLL
+        player2.rollScore = player2.roll();
+
+        // IF ROLL = 1, TURN OVER
+        if (player2.rollScore === 1) {
+
+            // RESET ROLL SCORE
+            player2.rollScore = 0;
+
+            // RESET TURN SCORE
+            player2.turnScore = 0;
+
+            // DISPLAY TEXT
+            $(".player2rollresult").text("1 - TURN OVER");
+
+            // CALL SWITCH FUNCTION
+            player2.switch();
+
+            // DISPLAY TURN SCORE
+            $(".player2turnresult").text(player2.turnScore);
+
+        } else {
+
+            // DISPLAY ROLL
+            $(".player2rollresult").text(player2.rollScore);
+
+            // ADD ROLL TO TURN SCORE
+            player2.turnScore += player2.rollScore;
+            $(".player2turnresult").text(player2.turnScore);
+        }
 
         event.preventDefault();
 
+    });
+
+    // PLAYER 2 HOLD
+    $("form#player2hold").submit(function(event) {
+
+        player2.totalScore += player2.turnScore;
+
+        $(".player2totalscore").text(player2.totalScore);
+
+        player2.switch();
+
+        // RESET VARIABLES
+        player2.rollScore = 0;
+        player2.turnScore = 0;
+
+        // RESET FIELDS
+        $(".player2rollresult").text("");
+        $(".player2turnresult").text("");
+
+        event.preventDefault();
     });
 
 });
