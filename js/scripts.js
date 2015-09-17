@@ -18,10 +18,10 @@ Player.prototype.roll = function() {
     } else return rand;
 }
 
-// Player.prototype.switch = function() {
-//     this.totalScore += this.turnScore;
-//     turn = !true;
-// }
+Player.prototype.switch = function() {
+    this.totalScore += this.turnScore;
+    turn = !true;
+}
 
 $(document).ready(function() {
 
@@ -32,15 +32,25 @@ $(document).ready(function() {
         var totalScore;
 
         var player1 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
-        // var player2 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
+        var player2 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
 
     $("form#player1roll").submit(function(event) {
 
-        player1.rollScore = this.roll;
-        console.log(this.roll);
-        // console.log(player1.rollScore);
-        player1[turnScore] += player1[rollScore];
-        var result = player1[turnScore];
+        player1.rollScore = player1.roll();
+        player1.turnScore += player1.rollScore;
+        var result = player1.turnScore;
+
+        $(".output").text(result);
+
+        $("#result").show();
+        event.preventDefault();
+    });
+
+    $("form#player1roll").submit(function(event) {
+
+        player1.rollScore = player1.roll();
+        player1.turnScore += player1.rollScore;
+        var result = player1.turnScore;
 
         $(".output").text(result);
 
