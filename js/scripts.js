@@ -1,10 +1,7 @@
-// TURN SWITCHING BOOLEAN
-var turn = true;
-
 // GENERATES RANDOM # BETWEEN 1 AND 6
 var randomNumber = function() {
     return Math.floor(Math.random() * 6 ) + 1;
-};
+}
 
 // CONSTRUCTOR
 function Player(rollScore, turnScore, totalScore) {
@@ -19,10 +16,11 @@ Player.prototype.roll = function() {
     return rand;
 }
 
-// SWITCH METHOD
-Player.prototype.switch = function() {
-    // this.totalScore += this.turnScore;
-    turn = !turn;
+// GAME OVER METHOD
+var gameOver = function(playerScore) {
+    if (playerScore >= 10) {
+        return true
+    } else return false;
 }
 
 // JQUERY
@@ -37,6 +35,7 @@ $(document).ready(function() {
 
     $("#playbutton").click(function(event) {
         $("#player1buttons").show();
+        $( this ).hide();
     });
 
     // PLAYER 1 ROLL
@@ -65,9 +64,6 @@ $(document).ready(function() {
             // DISPLAY TEXT
             $(".player1rollresult").text("1 - TURN OVER");
 
-            // CALL SWITCH FUNCTION
-            player1.switch();
-
             // DISPLAY TURN SCORE
             $(".player1turnresult").text(player1.turnScore);
 
@@ -87,6 +83,11 @@ $(document).ready(function() {
             $(".player1turnresult").text(player1.turnScore);
         }
 
+        // GAME OVER??
+        if ((player1.totalScore + player1.turnScore) >= 100) {
+            alert("PLAYER ONE WINZ");
+        }
+
         event.preventDefault();
     });
 
@@ -99,8 +100,7 @@ $(document).ready(function() {
         // DISPLAYS TOTAL SCORE
         $(".player1totalscore").text(player1.totalScore);
 
-        // TURN SWITCH
-        player1.switch();
+
 
         // RESET VARIABLES
         player1.rollScore = 0;
@@ -145,9 +145,6 @@ $(document).ready(function() {
             // DISPLAY TEXT
             $(".player2rollresult").text("1 - TURN OVER");
 
-            // CALL SWITCH FUNCTION
-            player2.switch();
-
             // DISPLAY TURN SCORE
             $(".player2turnresult").text(player2.turnScore);
 
@@ -167,6 +164,11 @@ $(document).ready(function() {
             $(".player2turnresult").text(player2.turnScore);
         }
 
+        // GAME OVER??
+        if ((player2.totalScore + player2.turnScore) >= 100) {
+            alert("PLAYER TWO WINZ");
+        }
+
         event.preventDefault();
 
     });
@@ -179,9 +181,6 @@ $(document).ready(function() {
 
         // DISPLAYS TOTAL SCORE
         $(".player2totalscore").text(player2.totalScore);
-
-        // SWITCHES TURNS
-        player2.switch();
 
         // RESET VARIABLES
         player2.rollScore = 0;
