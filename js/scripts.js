@@ -18,10 +18,10 @@ Player.prototype.roll = function() {
     } else return rand;
 }
 
-Player.prototype.switch = function() {
-    this.totalScore += this.turnScore;
-    turn = !true;
-}
+// Player.prototype.switch = function() {
+//     this.totalScore += this.turnScore;
+//     turn = !true;
+// }
 
 $(document).ready(function() {
 
