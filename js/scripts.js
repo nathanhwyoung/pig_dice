@@ -1,38 +1,45 @@
+// TURN SWITCHING BOOLEAN
 var turn = true;
 
+// GENERATES RANDOM # BETWEEN 1 AND 6
 var randomNumber = function() {
     return Math.floor(Math.random() * 6 ) + 1;
 };
 
+// CONSTRUCTOR
 function Player(rollScore, turnScore, totalScore) {
     this.rollScore = rollScore;
     this.turnScore = turnScore;
     this.totalScore = totalScore;
 }
 
+// ROLL METHOD
 Player.prototype.roll = function() {
     var rand = randomNumber();
     return rand;
 }
 
+// SWITCH METHOD
 Player.prototype.switch = function() {
     // this.totalScore += this.turnScore;
     turn = !turn;
 }
 
+// JQUERY
 $(document).ready(function() {
 
-        // debugger;
+    var rollScore;
+    var turnScore;
+    var totalScore;
 
-        var rollScore;
-        var turnScore;
-        var totalScore;
+    var player1 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
+    var player2 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
 
-        var player1 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
-        var player2 = new Player(rollScore = 0, turnScore = 0, totalScore = 0);
+    $("#playbutton").click(function(event) {
+        $("#player1buttons").show();
+    });
 
-        var state;
-
+    // PLAYER 1 ROLL
     $("form#player1roll").submit(function(event) {
 
         // RESET OPPOSING FIELDS
@@ -64,6 +71,12 @@ $(document).ready(function() {
             // DISPLAY TURN SCORE
             $(".player1turnresult").text(player1.turnScore);
 
+            // HIDE BUTTONS
+            $("#player1buttons").hide();
+
+            // SHOW PLAYER 2 BUTTONS
+            $("#player2buttons").show();
+
         } else {
 
             // DISPLAY ROLL
@@ -75,16 +88,18 @@ $(document).ready(function() {
         }
 
         event.preventDefault();
-
     });
 
     // PLAYER 1 HOLD
     $("form#player1hold").submit(function(event) {
 
+        // ADDS TURN SCORE TO TOTAL SCORE
         player1.totalScore += player1.turnScore;
 
+        // DISPLAYS TOTAL SCORE
         $(".player1totalscore").text(player1.totalScore);
 
+        // TURN SWITCH
         player1.switch();
 
         // RESET VARIABLES
@@ -95,9 +110,16 @@ $(document).ready(function() {
         $(".player1rollresult").text("");
         $(".player1turnresult").text("");
 
+        //HIDE PLAYER 1 BUTTONS
+        $("#player1buttons").hide();
+
+        // SHOW PLAYER 2 BUTTONS
+        $("#player2buttons").show();
+
         event.preventDefault();
     });
 
+    // PLAYER 2 ROLL
     $("form#player2roll").submit(function(event) {
 
         // RESET OPPOSING FIELDS
@@ -129,6 +151,12 @@ $(document).ready(function() {
             // DISPLAY TURN SCORE
             $(".player2turnresult").text(player2.turnScore);
 
+            //HIDE PLAYER 2 BUTTONS
+            $("#player2buttons").hide();
+
+            // SHOW PLAYER 1 BUTTONS
+            $("#player1buttons").show();
+
         } else {
 
             // DISPLAY ROLL
@@ -146,10 +174,13 @@ $(document).ready(function() {
     // PLAYER 2 HOLD
     $("form#player2hold").submit(function(event) {
 
+        // ADDS TURN SCORE TO TOTAL SCORE
         player2.totalScore += player2.turnScore;
 
+        // DISPLAYS TOTAL SCORE
         $(".player2totalscore").text(player2.totalScore);
 
+        // SWITCHES TURNS
         player2.switch();
 
         // RESET VARIABLES
@@ -160,7 +191,12 @@ $(document).ready(function() {
         $(".player2rollresult").text("");
         $(".player2turnresult").text("");
 
+        //HIDE PLAYER 2 BUTTONS
+        $("#player2buttons").hide();
+
+        // SHOW PLAYER 1 BUTTONS
+        $("#player1buttons").show();
+
         event.preventDefault();
     });
-
 });

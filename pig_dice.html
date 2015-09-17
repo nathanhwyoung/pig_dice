@@ -11,63 +11,91 @@
 
         <div class="container">
 
-            <!-- PLAYER 1 TURN -->
-
-            <form id="player1roll">
-                    <button type="submit" class="btn">ROLL</button>
-            </form>
-
-            <!-- PLAYER 1 HOLD -->
-
-            <form id="player1hold">
-                    <button type="submit" class="btn">HOLD</button>
-            </form>
-
             <!-- PLAYER 1 DISPLAY -->
 
-            <div>
-                <h1>TOTAL SCORE: <span class="player1totalscore"></span></h1
+            <div id="player1display">
+
+                <div>
+                    <h1>PLAYER 1</h1>
+                    <h1>TOTAL SCORE: <span class="player1totalscore"></span></h1
+                </div>
+
+                <div id="player2removable">
+
+                    <div>
+                        <h2>TURN SCORE: <span class="player1turnresult"></span></h1>
+                    </div>
+
+                    <div>
+                        <h3>ROLL SCORE: <span class="player1rollresult"></span></h1>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div>
-                <h2>TURN SCORE: <span class="player1turnresult"></span></h1>
+            <!-- PLAYER 1 BUTTONS  -->
+
+            <div id="player1buttons" class="hideablebuttons">
+
+                <!-- PLAYER 1 TURN -->
+
+                <form id="player1roll">
+                        <button type="submit" class="btn btn-default">ROLL</button>
+                </form>
+
+                <!-- PLAYER 1 HOLD -->
+
+                <form id="player1hold">
+                        <button type="submit" class="btn btn-default">HOLD</button>
+                </form>
+
             </div>
-
-            <div>
-                <h3>ROLL SCORE: <span class="player1rollresult"></span></h1>
-            </div>
-
-            <!-- PLAYER 2 TURN -->
-
-            <form id="player2roll">
-                    <button type="submit" class="btn">ROLL</button>
-            </form>
-
-            <!-- PLAYER 2 HOLD -->
-
-            <form id="player2hold">
-                    <button type="submit" class="btn">HOLD</button>
-            </form>
 
             <!-- PLAYER 2 DISPLAY -->
 
-            <div>
-                <h1>TOTAL SCORE: <span class="player2totalscore"></span></h1
+            <div id="player2display">
+
+                <div>
+                    <h1>PLAYER 2</h1>
+                    <h1>TOTAL SCORE: <span class="player2totalscore"></span></h1
+                </div>
+
+                <div id="player2removable">
+
+                    <div>
+                        <h2>TURN SCORE: <span class="player2turnresult"></span></h1>
+                    </div>
+
+                    <div>
+                        <h3>ROLL SCORE: <span class="player2rollresult"></span></h1>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div>
-                <h2>TURN SCORE: <span class="player2turnresult"></span></h1>
+            <!-- PLAYER 2 BUTTONS -->
+
+            <div id="player2buttons" class="hideablebuttons">
+
+                <!-- PLAYER 2 TURN -->
+
+                <form id="player2roll">
+                        <button type="submit" class="btn btn-default">ROLL</button>
+                </form>
+
+                <!-- PLAYER 2 HOLD -->
+
+                <form id="player2hold">
+                        <button type="submit" class="btn btn-default">HOLD</button>
+                </form>
+
             </div>
 
-            <div>
-                <h3>ROLL SCORE: <span class="player2rollresult"></span></h1>
+            <div id="playbutton">
+                <button type="submit" class="btn btn-default">PLAY</button>
             </div>
-
-
-
-            <!-- <div id="result">
-                <h1><span class="output"></span></h1>
-            </div> -->
 
         </div>
 
