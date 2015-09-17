@@ -11,11 +11,8 @@ function Player(rollScore, turnScore, totalScore) {
 }
 
 Player.prototype.roll = function() {
-    // var rand = testNumber;
     var rand = randomNumber();
-    if (rand === 1) {
-        return false;
-    } else return rand;
+    return rand;
 }
 
 Player.prototype.switch = function() {
@@ -36,60 +33,49 @@ $(document).ready(function() {
 
     $("form#player1roll").submit(function(event) {
 
-        player1.rollScore = player1.roll();
-        var currentRoll = player1.rollScore;
-        $(".player1rollresult").text(currentRoll);
+        var currentRoll;
 
-        player1.turnScore += player1.rollScore;
+        player1.rollScore = player1.roll();
+        if (player1.rollScore === 1) {
+            player1.rollScore = 0;
+            player1.turnScore = 0;
+            $(".player1rollresult").text("1 - TURN OVER");
+            player1.switch();
+        } else {
+            currentRoll = player1.rollScore;
+            $(".player1rollresult").text(currentRoll);
+            player1.turnScore += player1.rollScore;
+        }
+
         var currentTurn = player1.turnScore;
         $(".player1turnresult").text(currentTurn);
+        console.log(turn);
 
-        // $(".output").text(result);
-
-        $("#result").show();
         event.preventDefault();
     });
 
-    // $("form#player2roll").submit(function(event) {
-    //
-    //     player2.rollScore = player2.roll();
-    //     var currentRoll = player2.rollScore;
-    //     $(".output").text(currentRoll);
-    //
-    //     player2.turnScore += player2.rollScore;
-    //     var currentTurn = player2.turnScore;
-    //
-    //     $(".output").text(result);
-    //
-    //     $("#result").show();
-    //     event.preventDefault();
-    // });
+    $("form#player2roll").submit(function(event) {
 
-    $("form#player1hold").submit(function(event) {
+        var currentRoll;
 
-        $(".output").text(result);
+        player2.rollScore = player2.roll();
+        if (player2.rollScore === 1) {
+            player2.rollScore = 0;
+            player2.turnScore = 0;
+            $(".player2rollresult").text("1 - TURN OVER");
+            player2.switch();
+        } else {
+            currentRoll = player2.rollScore;
+            $(".player2rollresult").text(currentRoll);
+            player2.turnScore += player2.rollScore;
+        }
 
-        $("#result").show();
+        var currentTurn = player2.turnScore;
+        $(".player2turnresult").text(currentTurn);
+        console.log(turn);
+
         event.preventDefault();
     });
 
-    // $("form#player2roll").submit(function(event) {
-    //
-    //     // var roll = randomNumber();
-    //
-    //     $(".output").text(result);
-    //
-    //     $("#result").show();
-    //     event.preventDefault();
-    // });
-    //
-    // $("form#player2hold").submit(function(event) {
-    //
-    //
-    //     $(".output").text(result);
-    //
-    //     $("#result").show();
-    //     event.preventDefault();
-    // });
 
 });

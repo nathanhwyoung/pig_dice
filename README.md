@@ -1,8 +1,8 @@
-# Pig Latin Translator
+# PIG DICE
 
 ##### A web page that identifies if a word, phrase, number, or other sequence of characters is a palindrome. (9/9/15)
 
-#### By Logan Wu & Nathan Young
+#### By Jordan Navatril & Nathan Young
 
 ## Description
 
@@ -23,7 +23,7 @@ HTML, CSS, JavaScript, jQuery, Mocha and Chai for testing
 
 ### Legal
 
-Copyright (c) 2015 **Logan Wu & Nathan Young**
+Copyright (c) 2015 **Jordan Navatril & Nathan Young**
 
 This software is licensed under the MIT license.
 
