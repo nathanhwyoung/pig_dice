@@ -2,11 +2,14 @@
 
 ##### A web page that identifies if a word, phrase, number, or other sequence of characters is a palindrome. (9/9/15)
 
-#### By Jordan Navatril & Nathan Young
+#### By Nathan Young
 
 ## Description
 
-A palindrome is any word, phrase, number, or other sequence of characters which reads the same backward or forward.
+If the player rolls a 1, they score nothing and it becomes the next player's turn.
+If the player rolls any other number, it is added to their turn total and the player's turn continues.
+If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
+The first player to score 100 or more points wins.
 
 ## Specs
 
@@ -15,7 +18,7 @@ A palindrome is any word, phrase, number, or other sequence of characters which 
 
 ## Setup
 
-* Clone the project using the link provided on Github in the Terminal.
+* Open index.html in any browser.
 
 ## Technologies Used
 
@@ -23,7 +26,7 @@ HTML, CSS, JavaScript, jQuery, Mocha and Chai for testing
 
 ### Legal
 
-Copyright (c) 2015 **Jordan Navatril & Nathan Young**
+Copyright (c) 2015 **Nathan Young**
 
 This software is licensed under the MIT license.
 
