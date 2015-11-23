@@ -1,15 +1,15 @@
 # PIG DICE
 
-##### A web page that identifies if a word, phrase, number, or other sequence of characters is a palindrome. (9/9/15)
+##### Pig Dice, now in your browser! (9/9/15)
 
 #### By Nathan Young
 
 ## Description
 
-If the player rolls a 1, they score nothing and it becomes the next player's turn.
-If the player rolls any other number, it is added to their turn total and the player's turn continues.
-If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
-The first player to score 100 or more points wins.
+* If the player rolls a 1, they score nothing and it becomes the next player's turn.
+* If the player rolls any other number, it is added to their turn total and the player's turn continues.
+* If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
+* The first player to score 100 or more points wins.
 
 ## Specs
 
