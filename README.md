@@ -11,11 +11,6 @@
 * If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
 * The first player to score 100 or more points wins.
 
-## Specs
-
-* Returns true if the input reads the same forward as backward.
-* Returns false if the input does not read the same forward as backward.
-
 ## Setup
 
 * Open index.html in any browser.
